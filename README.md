@@ -36,10 +36,10 @@ Use the following steps to enable SRX-IOV on a physical adapter if you are using
 To add vSwitch and Port Groups:
 
 1.To create vSwitch: Navigate to Networking tab and select Virtual Switches and click Add standard virtual switch. 
-![Architecture Diagram](.images/sr-iov-config-3.png)
+(./images/sr-iov-config-3.png)
 
 2.To create port groups: Navigate to Networking tab and select Port Groups and click Add port group.
-![Architecture Diagram](.images/sr-iov-config-4.png)
+(./images/sr-iov-config-4.png)
 
 ## **Assigning the SR-IOV NIC to the SPK VM Worker Node**
 
