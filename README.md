@@ -24,48 +24,63 @@ To enable SR-IOV on a physical adapter in vSphere client:
 1.Navigate to the host in the left navigation pane and click the Manage tab. Go to Hardware tab. Under PCI Devices option, select the physical adapter and click Configure SR-IOV option. 
 ![Architecture Diagram](./images/sr-iov-config-1.png)
 
-In the populated window, select Yes to enable SR-IOV. In the virtual functions text box, specify the number of virtual functions to configure for the adapter. 
-Click Save.
-Restart the host.
-Verify the status of SR-IOV post reboot. The status is displayed as Active. 
-Add vSwitch and Port Groups 
-Use the following steps to enable SRX-IOV on a physical adapter if you are using ESXi version 6.5:
+2.In the populated window, select Yes to enable SR-IOV. In the virtual functions text box, specify the number of virtual functions to configure for the adapter.
+![Architecture Diagram](./images/sr-iov-config-2.png)
+3.Click Save.
+4.Restart the host.
+5.Verify the status of SR-IOV post reboot. The status is displayed as Active. 
+
+## **Add vSwitch and Port Groups**
+
+Use the following steps to enable SRX-IOV on a physical adapter if you are using ESXi version 7.0:
 To add vSwitch and Port Groups:
 
-To create vSwitch: Navigate to Networking tab and select Virtual Switches and click Add standard virtual switch. 
-To create port groups: Navigate to Networking tab and select Port Groups and click Add port group. 
-Assigning the SR-IOV NIC to the VFP VM
-Use the following steps to enable SRX-IOV on a physical adapter if you are using ESXi version 6.5:
-To assign the SR-IOV to the VFP VM using the vSphere Web Client:
+1.To create vSwitch: Navigate to Networking tab and select Virtual Switches and click Add standard virtual switch. 
+![Architecture Diagram](.images/sr-iov-config-3.png)
 
-Power-off the VFP when you add SR-IOV to the VFP VM.
-Navigate to the VFP VM in the left navigation pane and click the Manage tab.
-Select VM Hardware, and click Edit near the top right corner.
-In the Edit setting, go to Virtual Hardware tab and click Add network adapter option.
-Under New Network Adapter, select the respective port group for mapping. 
-Change Adapter Type as SR-IOV passthrough. 
-Map Physical function to respective SR-IOV NIC. 
-Click Save.
-Now, the SR-IOV interface is added to the VFP VM.
-Enable VLAN Tagging on SR-IOV Interfaces 
-You can configure VLAN tagging on SR-IOV interfaces on vMX instance deployed in VMware ESXi host with the following steps::
+2.To create port groups: Navigate to Networking tab and select Port Groups and click Add port group.
+![Architecture Diagram](.images/sr-iov-config-4.png)
+
+## **Assigning the SR-IOV NIC to the SPK VM Worker Node**
+
+Use the following steps to enable SRX-IOV on a physical adapter if you are using ESXi version 7.0:
+To assign the SR-IOV to the SPK VM Worker Node using the vSphere Web Client:
+
+1.Power-off the VFP when you add SR-IOV to the VFP VM.
+2.Navigate to the VFP VM in the left navigation pane and click the **Manage** tab.
+3.Select **VM Hardware**, and click **Edit** near the top right corner.
+4.In the Edit setting, go to **Virtual Hardware** tab and click **Add network adapter** option.
+5.Under New Network Adapter, select the respective port group for mapping. 
+![Architecture Diagram](.images/sr-iov-config-5.png)
+6.Change **Adapter Type** as SR-IOV passthrough.
+![Architecture Diagram](.images/sr-iov-config-6.png)
+7.Map Physical function to respective SR-IOV NIC. 
+![Architecture Diagram](.images/sr-iov-config-7.png)
+8.Click Save.
+Now, the SR-IOV interface is added to the SPK VM Worker Node.
+
+## **Enable VLAN Tagging on SR-IOV Interfaces**
+
+You can configure VLAN tagging on SR-IOV interfaces on SPK instance deployed in VMware ESXi host with the following steps:
 We've used the hardware and software combination for the following procedure:
 
-VMware ESXi version 6.5 Update 3
-i40en driver version 1.10.6 for Intel 700 Series network adapters
-Firmware version 7.20 for Intel 700 Series network adapters
-Enter the CLI configuration mode after logging in to the vMX.
-Include the vlan-tagging statement to enable VLAN tagging.
-content_copy zoom_out_map
-[edit interfaces xe-0/0/0]
-user@host# set vlan-tagging
-Include the vlan-offload statement to offload the VLAN filtering .
-content_copy zoom_out_map
-[edit interfaces xe-0/0/0]
-user@host# set vlan-offload
-Example:
+VMware ESXi version 7.0 Update 3
+Intel Corp X540T2 Converged Network Adapters T2
+Firmware version X540 Ethernet Controller Virtual Function for Intel X540T2 Converged Network Adapters T2 Series
 
-content_copy zoom_out_map
+1.Enter the CLI configuration mode after logging in to the vMX.
+2.Include the vlan-tagging statement to enable VLAN tagging.
+   ```bash
+   [edit interfaces xe-0/0/0]
+   user@host# set vlan-tagging
+   ```
+3.Include the vlan-offload statement to offload the VLAN filtering.
+   ```bash
+   [edit interfaces xe-0/0/0]
+   user@host# set vlan-offload
+   ```
+4.Verify with:
+```bash
 user@host> show configuration interfaces xe-0/0/0 
 vlan-tagging;
 vlan-offload;
@@ -85,7 +100,9 @@ unit 2 {
     encapsulation vlan-bridge;
     vlan-id 40;
 }
-Log in to the ESXi Web console . Navigate to Networking and select Port groups tab. Edit the settings for the required port.
+```
+5. Log in to the ESXi Web console . Navigate to **Networking** and select **Port groups** tab. Edit the settings for the required port.
+![Architecture Diagram](.images/sr-iov-config-8.png)
 
 Enable the VLAN trunking for the vSwitch that includes the SR-IOV interface. You must set the VLAN value to 4095.
 Note the following:
@@ -96,38 +113,42 @@ The VLAN ID 0 does not allow any VLAN traffic.
 
 Ensure that you have configured the VLAN ID matching to the VLAN configuration on the mapped interface. Example: If you have configured a VLAN ID 100 on the associated logical interface, then use VLAN ID 100 for SR-IOV. This setting enables receive and forwarding incoming frames that contain a matching VLAN ID that is VLAN 100.
 
-Click Save to save your settings.
-SR-IOV Interface for Layer 2 Services
+6.Click Save to save your settings.
+
+## **SR-IOV Interface for Layer 2 Services**
+
 To use SR-IOV interface for Layer 2 Services such as VPLS, Layer 2 VPN, Layer 2 circuit or bridging on a vMX instance deployed in VMware ESXi host, you must enable the trust mode and disable the spoof check in Intel NIC settings. Use the following steps to enable the trust mode and disable the spoof check:
-Install Intel esxcli plug-in. For instructions, see VMware KB article.
-Verify the trust mode and the spoof check status on the SR-IOV NIC by entering the following command in ESXi shell mode:
-content_copy zoom_out_map
-esxcli intnet sriovnic vf get -v <vf number> -n <vmnic name>
+1.Install Intel esxcli plug-in. For instructions, see VMware KB article KB37149.
+2.Verify the trust mode and the spoof check status on the SR-IOV NIC by entering the following command in ESXi shell mode:
+   ```bash
+   esxcli intnet sriovnic vf get -v <vf number> -n <vmnic name>
+   ```
 Example:
 
-content_copy zoom_out_map
-
+```bash
 root@host:~] esxcli intnet sriovnic vf get -v 0 -n vmnic12
-
-
 VF ID           Trusted         Spoof Check
 -----           -------         -----------
 0               false            true
-Enable the trust mode and disable the spoof check on Intel NIC.
-content_copy zoom_out_map
+```
+3. Enable the trust mode and disable the spoof check on Intel NIC.
+```bash
 esxcli intnet sriovnic vf set -s false -t true -v <vf number> -n <vmnic name>
-Example:
+```
+    Example:
 
-content_copy zoom_out_map
+```bash
 [root@host:~] esxcli intnet sriovnic vf set -s false -t true -v 0 -n vmnic12
-
 Trusted mode is set to true and spoof check is set to false
-content_copy zoom_out_map
+```
+```bash
 [root@host:~] esxcli intnet sriovnic vf get -v 0 -n vmnic12
 VF ID           Trusted         Spoof Check
 -----           -------         -----------
 0               true            false
-Restart the vMX FPC configured with the SR-IOV interface after changing to the trust mode and spoof check values.
-content_copy zoom_out_map
+```
+4.Restart the vMX FPC configured with the SR-IOV interface after changing to the trust mode and spoof check values.
+```bash
 user@host> request chassis fpc slot <number> restart
+```
 Once the FPC is online, Layer-2 services start working on SR-IOV interface.
