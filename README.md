@@ -3,19 +3,21 @@ date_range11-Jun-21
 arrow_backward arrow_forward
 The physical network interfaces support single root I/O virtualization (SR-IOV) capability and can be connected to the VMs using PCI passthrough. Before you enable SR-IOV for VMware, note the following:
 
-SR-IOV is only supported with Intel Ivy Bridge CPU (or higher) and Intel X520 NICs using ixgbe driver or X710 NICs with 10G ports and using i40e driver. Any other NIC models are not supported.
+SR-IOV is only supported with Intel and Mellanoxx Network Cards using ixgbe driver with 10G ports and using i40e driver. Any other NIC models are not supported.
 
-Support for ixgbe driver and i40e driver is available from Junos OS Release 18.4R1 onwards.
+Support for ixgbe driver and i40e driver is available from SPK 1.2.3 onwards.
 
-Starting in Junos OS Release 18.4R1, in VMware deployments operating in SR-IOV mode with an ESXi server, support is available for VLAN-tagged traffic for vMX interfaces.
+Starting in SPK 1.2.4, in VMware deployments operating in SR-IOV mode with an ESXi Enterprise plus server, support is available for VLAN-tagged traffic for vMX interfaces.
 
-To enable vMX with vSphere for SR-IOV adapters, perform these tasks:
+To enable SPK with vSphere for SR-IOV adapters, perform these tasks:
 
-Enable SR-IOV on a Physical Adapter
+**Enable SR-IOV on a Physical Adapter**
 Use the following steps to enable SRX-IOV on a physical adapter. The following procedures are applicable for ESXi version 6.5.
 To enable SR-IOV on a physical adapter in vSphere client:
 
-Navigate to the host in the left navigation pane and click the Manage tab. Go to Hardware tab. Under PCI Devices option, select the physical adapter and click Configure SR-IOV option. 
+1.Navigate to the host in the left navigation pane and click the Manage tab. Go to Hardware tab. Under PCI Devices option, select the physical adapter and click Configure SR-IOV option. 
+![Architecture Diagram](./images/sr-iov-config-1.png)
+
 In the populated window, select Yes to enable SR-IOV. In the virtual functions text box, specify the number of virtual functions to configure for the adapter. 
 Click Save.
 Restart the host.
