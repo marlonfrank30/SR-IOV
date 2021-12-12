@@ -22,11 +22,11 @@ Use the following steps to enable SRX-IOV on a physical adapter. The following p
 To enable SR-IOV on a physical adapter in vSphere client:
 1.Navigate to the host in the left navigation pane and click the Manage tab. Go to Hardware tab. Under PCI Devices option, select the physical adapter and click Configure SR-IOV option. 
 ![](./images/sr-iov-config-1.png)
-1.In the populated window, select Yes to enable SR-IOV. In the virtual functions text box, specify the number of virtual functions to configure for the adapter.
+1. In the populated window, select Yes to enable SR-IOV. In the virtual functions text box, specify the number of virtual functions to configure for the adapter.
 ![](./images/sr-iov-config-2.png)
-1.Click Save.
-1.Restart the host.
-1.Verify the status of SR-IOV post reboot. The status is displayed as Active. 
+1. Click Save.
+1. Restart the host.
+1. Verify the status of SR-IOV post reboot. The status is displayed as Active. 
 
 ## **Add vSwitch and Port Groups**
 
@@ -36,7 +36,7 @@ To add vSwitch and Port Groups:
 1.To create vSwitch: Navigate to Networking tab and select Virtual Switches and click Add standard virtual switch. 
 ![](./images/sr-iov-config-3.png)
 
-2.To create port groups: Navigate to Networking tab and select Port Groups and click Add port group.
+1.To create port groups: Navigate to Networking tab and select Port Groups and click Add port group.
 ![](./images/sr-iov-config-4.png)
 
 ## **Assigning the SR-IOV NIC to the SPK VM Worker Node**
