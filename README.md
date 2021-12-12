@@ -56,7 +56,7 @@ To assign the SR-IOV to the SPK VM Worker Node for the**Ingress PCI VF flow** us
 ![](./images/sr-iov-config-7.png)
 1. Click Save.
 Now, the SR-IOV interface is added to the SPK VM Worker Node.
-1. Repeat Step 9 for the **Egress PCI VF Flow.**
+2.Repeat Step 9 for the **Egress PCI VF Flow.**
 
 Alternatively the 2 PCI Virtual Functions (VFs) can be manually added to the VM worker Node directly in the PCI VF configuration where 1 VF will be configured for the Ingress Flow and another for Egress Flow both to be be assigned to the SPK Worker Node as follows:
 
