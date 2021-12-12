@@ -12,7 +12,7 @@ Starting in SPK 1.2.4, in VMware deployments operating in SR-IOV mode with an ES
 To enable SPK with vSphere for SR-IOV adapters, perform these tasks:
 
 ## **Enable Virtualization Technology in the Server BIOS**
-in order to enable SR-IOV capabilities, the BIOS need to support Virtualization Technilogy (VTx) feature. Reboot the Server and then press ESC or F10 in your keyboard. look for System Security adn then Virtualization Technology. Set it to enabled. The Screenshot below was taken from an 820 HP Workstation that supports SR-IOV Virtual Function tecnology. 
+in order to enable SR-IOV capabilities, the BIOS need to support Virtualization Technilogy (VTx) feature. Reboot the Server and then press ESC or F10 in your keyboard. look for System Security adn then Virtualization Technology. Set it to enabled. The Screenshot below was taken from an 820 HP Workstation that supports SR-IOV Virtual Function tecnology.
 ![](./images/bios-setting.png)
 
 
@@ -21,7 +21,7 @@ in order to enable SR-IOV capabilities, the BIOS need to support Virtualization 
 Use the following steps to enable SRX-IOV on a physical adapter. The following procedures are applicable for ESXi version 6.5.
 To enable SR-IOV on a physical adapter in vSphere client:
 
-1.Navigate to the host in the left navigation pane and click the Manage tab. Go to Hardware tab. Under PCI Devices option, select the physical adapter and click Configure SR-IOV option. 
+1.Navigate to the host in the left navigation pane and click the Manage tab. Go to Hardware tab. Under PCI Devices option, select the physical adapter and click Configure SR-IOV option.
 ![](./images/sr-iov-config-1.png)
 
 2.In the populated window, select Yes to enable SR-IOV. In the virtual functions text box, specify the number of virtual functions to configure for the adapter.
