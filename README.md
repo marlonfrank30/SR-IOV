@@ -107,7 +107,7 @@ unit 2 {
 }
 ```
 1. Log in to the ESXi Web console . Navigate to **Networking** and select **Port groups** tab. Edit the settings for the required port.
-![Architecture Diagram](.images/sr-iov-config-8.png)
+![](./images/sr-iov-config-8.png)
 
 Enable the VLAN trunking for the vSwitch that includes the SR-IOV interface. You must set the VLAN value to 4095.
 Note the following:
@@ -123,8 +123,8 @@ Ensure that you have configured the VLAN ID matching to the VLAN configuration o
 ## **SR-IOV Interface for Layer 2 Services**
 
 To use SR-IOV interface for Layer 2 Services such as VPLS, Layer 2 VPN, Layer 2 circuit or bridging on a vMX instance deployed in VMware ESXi host, you must enable the trust mode and disable the spoof check in Intel NIC settings. Use the following steps to enable the trust mode and disable the spoof check:
-1.Install Intel esxcli plug-in. For instructions, see VMware KB article KB37149.
-2.Verify the trust mode and the spoof check status on the SR-IOV NIC by entering the following command in ESXi shell mode:
+1. Install Intel esxcli plug-in. For instructions, see VMware KB article KB37149.
+1. Verify the trust mode and the spoof check status on the SR-IOV NIC by entering the following command in ESXi shell mode:
    ```bash
    esxcli intnet sriovnic vf get -v <vf number> -n <vmnic name>
    ```
@@ -136,7 +136,7 @@ VF ID           Trusted         Spoof Check
 -----           -------         -----------
 0               false            true
 ```
-3. Enable the trust mode and disable the spoof check on Intel NIC.
+1. Enable the trust mode and disable the spoof check on Intel NIC.
 ```bash
 esxcli intnet sriovnic vf set -s false -t true -v <vf number> -n <vmnic name>
 ```
@@ -152,7 +152,7 @@ VF ID           Trusted         Spoof Check
 -----           -------         -----------
 0               true            false
 ```
-4.Restart the vMX FPC configured with the SR-IOV interface after changing to the trust mode and spoof check values.
+1. Restart the vMX FPC configured with the SR-IOV interface after changing to the trust mode and spoof check values.
 ```bash
 user@host> request chassis fpc slot <number> restart
 ```
