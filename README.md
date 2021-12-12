@@ -44,19 +44,19 @@ To add vSwitch and Port Groups:
 Use the following steps to enable SRX-IOV on a physical adapter if you are using ESXi version 7.0:
 To assign the SR-IOV to the SPK VM Worker Node for the**Ingress PCI VF flow** using the vSphere Web Client do the following:
 
-1.Power-off the VFP when you add SR-IOV to the VFP VM.
-2.Navigate to the VFP VM in the left navigation pane and click the **Manage** tab.
-3.Select **VM Hardware**, and click **Edit** near the top right corner.
-4.In the Edit setting, go to **Virtual Hardware** tab and click **Add network adapter** option.
-5.Under New Network Adapter, select the respective port group for mapping. 
+1. Power-off the VFP when you add SR-IOV to the VFP VM.
+1. Navigate to the VFP VM in the left navigation pane and click the **Manage** tab.
+1. Select **VM Hardware**, and click **Edit** near the top right corner.
+1. In the Edit setting, go to **Virtual Hardware** tab and click **Add network adapter** option.
+1. Under New Network Adapter, select the respective port group for mapping. 
 ![](./images/sr-iov-config-5.png)
-6.Change **Adapter Type** as SR-IOV passthrough.
+1. Change **Adapter Type** as SR-IOV passthrough.
 ![](./images/sr-iov-config-6.png)
-7.Map Physical function to respective SR-IOV NIC. 
+1. Map Physical function to respective SR-IOV NIC. 
 ![](./images/sr-iov-config-7.png)
-8.Click Save.
+1. Click Save.
 Now, the SR-IOV interface is added to the SPK VM Worker Node.
-9.Repeat Step 9 for the **Egress PCI VF Flow.**
+1. Repeat Step 9 for the **Egress PCI VF Flow.**
 
 Alternatively the 2 PCI Virtual Functions (VFs) can be manually added to the VM worker Node directly in the PCI VF configuration where 1 VF will be configured for the Ingress Flow and another for Egress Flow both to be be assigned to the SPK Worker Node as follows:
 
