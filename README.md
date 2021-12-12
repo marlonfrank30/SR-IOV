@@ -1,6 +1,4 @@
 Enabling SR-IOV for VMware
-date_range11-Jun-21
-arrow_backward arrow_forward
 The physical network interfaces support single root I/O virtualization (SR-IOV) capability and can be connected to the VMs using PCI passthrough. Before you enable SR-IOV for VMware, note the following:
 
 SR-IOV is only supported with Intel and Mellanoxx Network Cards using ixgbe driver with 10G ports and using i40e driver. Any other NIC models are not supported.
