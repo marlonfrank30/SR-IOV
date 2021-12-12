@@ -60,7 +60,9 @@ Alternatively the 2 PCI Virtual Functions (VFs) can be manually added to the VM 
 
 1. Navigate under **Virtual Machines**, select the **VM Guest Worker Node** that wil be assigned the PCI Card, click **Edit** and then finally under**Virtual Hardware** hit **add other device** as in the example below:
 ![](./images/sr-iov-config-9.png)
-1. Repeat the process for other VM GUEST Worker Nodes
+1. Select the desired Virtual Fuction (VF) 
+![](./images/sr-iov-config-10.png)
+2. Repeat the process for other VM GUEST Worker Nodes
 
 ## **Enable VLAN Tagging on SR-IOV Interfaces**
 
