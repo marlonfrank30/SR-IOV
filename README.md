@@ -26,8 +26,11 @@ To enable SR-IOV on a physical adapter in vSphere client:
 
 2.In the populated window, select Yes to enable SR-IOV. In the virtual functions text box, specify the number of virtual functions to configure for the adapter.
 ![](./images/sr-iov-config-2.png)
+
 3.Click Save.
+
 4.Restart the host.
+
 5.Verify the status of SR-IOV post reboot. The status is displayed as Active. 
 
 ## **Add vSwitch and Port Groups**
