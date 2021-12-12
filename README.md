@@ -73,18 +73,18 @@ VMware ESXi version 7.0 Update 3
 Intel Corp X540T2 Converged Network Adapters T2
 Firmware version X540 Ethernet Controller Virtual Function for Intel X540T2 Converged Network Adapters T2 Series
 
-1.Enter the CLI configuration mode after logging in to the vMX.
-2.Include the vlan-tagging statement to enable VLAN tagging.
+1. Enter the CLI configuration mode after logging in to the vMX.
+1. Include the vlan-tagging statement to enable VLAN tagging.
    ```bash
    [edit interfaces xe-0/0/0]
    user@host# set vlan-tagging
    ```
-3.Include the vlan-offload statement to offload the VLAN filtering.
+1. Include the vlan-offload statement to offload the VLAN filtering.
    ```bash
    [edit interfaces xe-0/0/0]
    user@host# set vlan-offload
    ```
-4.Verify with:
+1. Verify with:
 ```bash
 user@host> show configuration interfaces xe-0/0/0 
 vlan-tagging;
@@ -106,7 +106,7 @@ unit 2 {
     vlan-id 40;
 }
 ```
-5. Log in to the ESXi Web console . Navigate to **Networking** and select **Port groups** tab. Edit the settings for the required port.
+1. Log in to the ESXi Web console . Navigate to **Networking** and select **Port groups** tab. Edit the settings for the required port.
 ![Architecture Diagram](.images/sr-iov-config-8.png)
 
 Enable the VLAN trunking for the vSwitch that includes the SR-IOV interface. You must set the VLAN value to 4095.
@@ -118,7 +118,7 @@ The VLAN ID 0 does not allow any VLAN traffic.
 
 Ensure that you have configured the VLAN ID matching to the VLAN configuration on the mapped interface. Example: If you have configured a VLAN ID 100 on the associated logical interface, then use VLAN ID 100 for SR-IOV. This setting enables receive and forwarding incoming frames that contain a matching VLAN ID that is VLAN 100.
 
-6.Click Save to save your settings.
+1. Click Save to save your settings.
 
 ## **SR-IOV Interface for Layer 2 Services**
 
