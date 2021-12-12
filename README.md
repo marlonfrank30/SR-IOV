@@ -36,7 +36,7 @@ To add vSwitch and Port Groups:
 1.To create vSwitch: Navigate to Networking tab and select Virtual Switches and click Add standard virtual switch. 
 ![](./images/sr-iov-config-3.png)
 
-1.To create port groups: Navigate to Networking tab and select Port Groups and click Add port group.
+2.To create port groups: Navigate to Networking tab and select Port Groups and click Add port group.
 ![](./images/sr-iov-config-4.png)
 
 ## **Assigning the SR-IOV NIC to the SPK VM Worker Node**
