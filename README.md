@@ -13,7 +13,7 @@ To enable SPK with vSphere for SR-IOV adapters, perform these tasks:
 
 ## **Enable Virtualization Technology in the Server BIOS**
 in order to enable SR-IOV capabilities, the BIOS need to support Virtualization Technilogy (VTx) feature. Reboot the Server and then press ESC or F10 in your keyboard. look for System Security adn then Virtualization Technology. Set it to enabled. The Screenshot below was taken from an 820 HP Workstation that supports SR-IOV Virtual Function tecnology. 
-![Architecture Diagram](./images/bios-setting.png)
+![](./images/bios-setting.png)
 
 
 ## **Enable SR-IOV on a Physical Adapter**
@@ -22,10 +22,10 @@ Use the following steps to enable SRX-IOV on a physical adapter. The following p
 To enable SR-IOV on a physical adapter in vSphere client:
 
 1.Navigate to the host in the left navigation pane and click the Manage tab. Go to Hardware tab. Under PCI Devices option, select the physical adapter and click Configure SR-IOV option. 
-![Architecture Diagram](./images/sr-iov-config-1.png)
+![](./images/sr-iov-config-1.png)
 
 2.In the populated window, select Yes to enable SR-IOV. In the virtual functions text box, specify the number of virtual functions to configure for the adapter.
-![Architecture Diagram](./images/sr-iov-config-2.png)
+![](./images/sr-iov-config-2.png)
 3.Click Save.
 4.Restart the host.
 5.Verify the status of SR-IOV post reboot. The status is displayed as Active. 
@@ -44,7 +44,7 @@ To add vSwitch and Port Groups:
 ## **Assigning the SR-IOV NIC to the SPK VM Worker Node**
 
 Use the following steps to enable SRX-IOV on a physical adapter if you are using ESXi version 7.0:
-To assign the SR-IOV to the SPK VM Worker Node using the vSphere Web Client:
+To assign the SR-IOV to the SPK VM Worker Node for the**Ingress PCI VF flow** using the vSphere Web Client do the following:
 
 1.Power-off the VFP when you add SR-IOV to the VFP VM.
 2.Navigate to the VFP VM in the left navigation pane and click the **Manage** tab.
@@ -58,6 +58,13 @@ To assign the SR-IOV to the SPK VM Worker Node using the vSphere Web Client:
 ![](./images/sr-iov-config-7.png)
 8.Click Save.
 Now, the SR-IOV interface is added to the SPK VM Worker Node.
+9. Repeat Step 9 for the **Egress PCI VF Flow.**
+
+Alternatively the 2 PCI Virtual Functions (VFs) can be manually added to the VM worker Node directly in the PCI VF configuration where 1 VF will be configured for the Ingress Flow and another for Egress Flow both to be be assigned to the SPK Worker Node as follows:
+
+1.Navigate under **Virtual Machines**, select the **VM Guest Worker Node** that wil be assigned the PCI Card, click **Edit** and then finally under**Virtual Hardware** hit **add other device** as in the example below:
+![](./images/sr-iov-config-9.png)
+2.Repeat the process for other VM GUEST Worker Nodes
 
 ## **Enable VLAN Tagging on SR-IOV Interfaces**
 
