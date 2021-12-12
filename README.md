@@ -20,11 +20,6 @@ in order to enable SR-IOV capabilities, the BIOS need to support Virtualization 
 
 Use the following steps to enable SRX-IOV on a physical adapter. The following procedures are applicable for ESXi version 6.5.
 To enable SR-IOV on a physical adapter in vSphere client:
-1.Navigate to the host in the left navigation pane and click the Manage tab. Go to Hardware tab. Under PCI Devices option, select the physical adapter and click Configure SR-IOV option. ![](./images/sr-iov-config-1.png)
-2.In the populated window, select Yes to enable SR-IOV. In the virtual functions text box, specify the number of virtual functions to configure for the adapter. ![](./images/sr-iov-config-2.png)
-3.Click Save.
-4.Restart the host.
-5.Verify the status of SR-IOV post reboot. The status is displayed as Active. 
 
 ## **Add vSwitch and Port Groups**
 
