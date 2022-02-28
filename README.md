@@ -157,4 +157,3 @@ VF ID           Trusted         Spoof Check
 user@host> request chassis fpc slot <number> restart
 ```
 Once the FPC is online, Layer-2 services start working on SR-IOV interface.
-t
